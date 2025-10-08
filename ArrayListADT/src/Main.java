@@ -1,14 +1,8 @@
-package ArrayListADT.src;
-
 class Main {
-  public static void main(String[] args) {
-
-  }
-
-  public class ArrayListADT<E> implements ArrayListADT.src.ListADT<E> {
+  public class ArrayListADT<E> implements ListADT<E> {
+    private static int CAPACITY = 100;
     private E[] data;
     private int size;
-    private static int CAPACITY = 100;
 
     public ArrayListADT(int CAPACITY) {
       data = (E[]) new Object[CAPACITY];
@@ -42,8 +36,17 @@ class Main {
 
     @Override
     public void insert(int i, E x) {
-      // TODO Auto-generated method stub
-      throw new UnsupportedOperationException("Unimplemented method 'insert'");
+      if (size == CAPACITY) {
+        throw FullListException("List Full!");
+      }
+      if (i < 0 || (i > size)) {
+        throw new IndexOutOfBoundsException();
+      }
+      for (int j = size - 1; j >= i; j--) {
+        data[j + 1] = data[j];
+      }
+      data[i] = x;
+      size++;
     }
 
     @Override
@@ -57,6 +60,10 @@ class Main {
       // TODO Auto-generated method stub
       throw new UnsupportedOperationException("Unimplemented method 'search'");
     }
+
+  }
+
+  public static void main(String[] args) {
 
   }
 

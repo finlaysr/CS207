@@ -1,5 +1,3 @@
-package ArrayListADT.src;
-
 public interface ListADT<E> {
   public boolean isEmpty();
 
