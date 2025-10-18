@@ -1,5 +1,7 @@
 // Define a generic interface for the List ADT
 public interface ListADT<E> {
+  public void expandCapacity();
+
   public boolean isEmpty();
 
   public int size();

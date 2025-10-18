@@ -2,6 +2,7 @@ public class MyArrayList<E> implements ListADT<E> {
   private E[] data;
   private int size;
   private static final int DEFAULT_CAPACITY = 100;
+  private int capacity;
 
   // No-argument constructor
   public MyArrayList() {
@@ -12,7 +13,16 @@ public class MyArrayList<E> implements ListADT<E> {
   @SuppressWarnings("unchecked")
   public MyArrayList(int capacity) {
     data = (E[]) new Object[capacity];
+    this.capacity = capacity;
     size = 0;
+  }
+
+  @Override
+  @SuppressWarnings("unchecked")
+  public void expandCapacity() {
+    E[] largerData = (E[]) new Object[size * 2];
+    java.lang.System.arraycopy(data, 0, largerData, 0, size);
+    data = largerData;
   }
 
   public boolean isEmpty() {
@@ -46,8 +56,8 @@ public class MyArrayList<E> implements ListADT<E> {
     if (i < 0 || i > size) {
       throw new IndexOutOfBoundsException();
     }
-    if (size == DEFAULT_CAPACITY) {
-      throw new FullListException("The list is full now");
+    if (size == capacity) {
+      expandCapacity();
     }
     for (int j = size - 1; j >= i; j--) {
       data[j + 1] = data[j];
