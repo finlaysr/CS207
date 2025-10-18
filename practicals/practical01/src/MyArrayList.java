@@ -20,7 +20,8 @@ public class MyArrayList<E> implements ListADT<E> {
   @Override
   @SuppressWarnings("unchecked")
   public void expandCapacity() {
-    E[] largerData = (E[]) new Object[size * 2];
+    capacity *= 2;
+    E[] largerData = (E[]) new Object[capacity];
     java.lang.System.arraycopy(data, 0, largerData, 0, size);
     data = largerData;
   }

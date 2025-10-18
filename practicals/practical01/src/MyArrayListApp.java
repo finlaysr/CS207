@@ -38,9 +38,9 @@ public class MyArrayListApp {
           break;
 
         case 2:
-          System.out.print("Enter the position (index) to add the item (0 to " + (list.size() - 1) + "): "); // legal
-                                                                                                             // position
-                                                                                                             // reminder
+          System.out.print("Enter the position (index) of the item to remove" + (list.size() - 1) + "): "); // legal
+                                                                                                            // position
+                                                                                                            // reminder
           int indexToRemove = sc.nextInt();
           try {
             String removedItem = list.delete(indexToRemove);
