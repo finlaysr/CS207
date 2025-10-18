@@ -5,7 +5,7 @@ public class MyArrayListApp {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        ........ // Create a MyArrayList to store Strings here
+        MyArrayList<String> list = new MyArrayList<>(); // Create a MyArrayList to store Strings here
 
         int choice;
         do {

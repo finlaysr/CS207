@@ -16,21 +16,20 @@ public class MyArrayList<E> implements ListADT<E>{
     }
 
     public boolean isEmpty(){
-
-
+        return size == 0;
     }
 
     public int size(){
-      
-
-
+        return size;
     }
 
     public E get(int index){
         if (index < 0 || index >= size) {
             throw new IndexOutOfBoundsException();
         }
-        if (size == 0) throw new EmptyListException("The list is empty now!");
+        if (size == 0) {
+            throw new EmptyListException("The list is empty now!");
+        }
         return data[index];
     }
 
@@ -57,13 +56,16 @@ public class MyArrayList<E> implements ListADT<E>{
         size++;
     }
 
-    public E delete(int index) {
-     
-
-
-
-
-
+    public E delete(int i) {
+        if (i < 0 || i > size) {
+            throw new IndexOutOfBoundsException();
+        }
+        E deleted = data[i];
+        for (int j = i; j < size; j++) {
+            data[j] = data[j+1];
+        }
+        size--;
+        return deleted;
     }
 
     public void display(){
@@ -76,15 +78,12 @@ public class MyArrayList<E> implements ListADT<E>{
     }
 
     public int search(E x){
-   
-
-
-
+        for (int i = 0; i < size; i++) {
+            if (data[i].equals(x)) {
+                return i;
+            }
+        }
+        return -1;
     }
 
-
-
-
 }
-
-
