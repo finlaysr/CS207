@@ -8,23 +8,34 @@ public class LinkedStack<E> implements StackADT<E> {
   }
 
   public boolean isEmpty() {
-
+    return size == 0;
   }
 
   public int size() {
-
+    return size;
   }
 
   public void push(E item) {
-
+    Node<E> v = new Node<>(item, top);
+    top = v;
+    size++;
   }
 
   public E pop() {
-
+    if (isEmpty()) {
+      throw new EmptyStackException("No elements to pop");
+    }
+    E removed = top.getElement();
+    top = top.getNext();
+    size--;
+    return removed;
   }
 
   public E getTop() {
-
+    if (isEmpty()) {
+      throw new EmptyStackException("No elements to get");
+    }
+    return top.getElement();
   }
 
   @Override
