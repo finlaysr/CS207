@@ -3,7 +3,9 @@ import java.util.Scanner;
 class Main {
   public static void main(String[] args) {
     System.out.println(String.format("Hello and welcome!"));
-    question2();
+    // question2();
+    ParenthesesMatcher checkBrackets = new ParenthesesMatcher();
+    System.out.println(checkBrackets.check("<{[]}()>"));
   }
 
   public static void question2() {
